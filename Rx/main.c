@@ -122,8 +122,9 @@ int main(void)
 		if ( rx_flag == 1)
 		{
 			CDC_Transmit_FS((uint8_t *)Rx_str, strlen(Rx_str));
+			rx_flag = 0;
 		}
-		rx_flag = 0;
+
 			HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 			HAL_Delay(500);
     /* USER CODE BEGIN 3 */

@@ -47,8 +47,9 @@ SPI_HandleTypeDef hspi1;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-uint8_t TX_BUF[1] = {'a'};
-
+uint8_t TX_BUF[5] = {'a','b','c',';','d'};
+extern uint8_t rx_flag;
+extern uint8_t rx_flag;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
