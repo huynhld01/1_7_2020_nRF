@@ -96,7 +96,7 @@ int main(void)
   MX_SPI1_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+		NRF24_ini();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -110,7 +110,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
-		NRF24_ini();
+
 }
 
 /**

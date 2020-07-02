@@ -110,7 +110,7 @@ int main(void)
   MX_SPI1_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+	NRF24_ini();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -118,18 +118,18 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-		IRQ_Callback();
+
 		if ( rx_flag == 1)
 		{
 			CDC_Transmit_FS((uint8_t *)Rx_str, strlen(Rx_str));
 		}
-
+		rx_flag = 0;
 			HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 			HAL_Delay(500);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
-	NRF24_ini();
+
 }
 
 /**
@@ -290,7 +290,17 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_GPIO_EXTI_Callback( uint16_t GPIO_Pin)
+{
+	if (GPIO_Pin == GPIO_PIN_3)
+	{
+		IRQ_Callback();
+	}
+	else 
+	{
+		__NOP();
+	}
+}
 /* USER CODE END 4 */
 
 /**
